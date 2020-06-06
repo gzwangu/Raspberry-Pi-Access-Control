@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="cn-zh">
+<head>
+    <meta charset="UTF-8">
+    <title>人员管理</title>
+    <style type="text/css">
+        *{
+            margin: 10;
+            padding: 0;
+        }
+        #upBox{
+            text-align: center;
+            width:500px;
+            padding: 20px;
+            border: 1px solid #666;
+            margin: auto;
+            margin-top: 150px;
+            margin-bottom: 200px;
+            position: relative;
+            border-radius: 10px;s
+		}
+        #btn{
+            outline: none;
+            width: 100px;
+            height: 30px;
+            background: cornflowerblue;
+            border: 1px solid cornflowerblue;
+            color: white;
+            cursor: pointer;
+            margin-top: 30px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>家庭成员列表</h1>
+        <hr>
+        <table border="1px" width="800px">
+            <tr style="text-align:center">
+                <th>人脸符记</th>
+                <th>姓名</th>
+                <th>操作</th>
+            </tr>
+            {% for i in facelist %}
+            <tr style="text-align:center">
+                <td>{{ i.facetoken }}</td>
+                <td>{{ i.user_id }}</td>
+                <td><a href="javascript:if(window.confirm('确认删除？')){window.location.href='/removeface?facetoken={{ i.facetoken }}'}">删除</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+
+    <form action="{{ url_for("user.addface") }}" method="post" enctype="multipart/form-data" id="upBox">
+        <p><font size="4">新增家庭成员</font></p>
+        <div class="form-group">
+            <label class="sr-only" for="name">姓名:</label>
+            <input type="text" class="form-control" name="user" placeholder="请输入姓名">
+        </div>
+        <p></p>
+        <div class="form-group">
+            <label class="sr-only" for="inputfile">上传照片:</label>
+            <input type="file" name="image" multiple accept="image/png,image/jpg,image/JPEG"/>
+        </div>
+        <input type="submit" value="确认添加" id="btn">
+    </form>
+    
+</body>
+</html>

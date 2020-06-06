@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>监控系统</title>
+    <style>
+        body {
+            background-color: #484856;
+        }
+
+    </style>
+</head>
+<body>
+<h1 align="center" style="color: whitesmoke;">家庭门禁系统</h1>
+<div class="top">
+    <div class="recorder" id="recorder" align="center">
+        <button onclick="window.location.href = 'record'">门禁记录</button>
+        <button onclick="window.location.href = 'permang'">人员管理</button>
+        <button onclick="ocdoor()">开/关门</button>
+        <input type="button" class="btn" value="退出登录" onclick="javascrtpt:window.location.href='{{ url_for('user.logout') }}'"/>
+    </div>
+</div>
+<div align="center"><img id="video" src="{{ url_for('home.video_viewer') }}" width="60%" vspace="20"></div>
+</body>
+<script>
+function ocdoor() {
+  var url = "{{ url_for("user.ocdoor") }}"
+  var request = new XMLHttpRequest();
+  request.open("GET", url);
+  request.send();
+  alert("芝麻开门");
+}
+</script>
+</html>

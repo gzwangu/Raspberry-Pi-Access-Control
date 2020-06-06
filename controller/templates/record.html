@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="cn-zh">
+<head>
+    <meta charset="UTF-8">
+    <title>门禁数据列表</title>
+</head>
+
+<body>
+    <center>
+    <h1>家庭门禁记录</h1>
+    <hr>
+    <table border="1px" width="800px">
+        <tr style="text-align:center">
+            <th>时间日期</th>
+            <th>人脸符记</th>
+            <th>相似度</th>
+            <th>人脸名</th>
+            <th>人名</th>
+        </tr>
+        {% for i in recordlist %}
+        <tr style="text-align:center">
+            <td>{{ i.date_time }}</td>
+            <td>{{ i.face_token }}</td>
+            <td>{{ i.confidence }}</td>
+            <td>{{ i.face_name }}</td>
+            <td>{{ i.user_id }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    </center>
+
+</body>
+</html>
