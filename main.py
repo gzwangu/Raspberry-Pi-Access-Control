@@ -1,8 +1,8 @@
 from controller import create_app
 from controller.utils.Mysql import Mysql
-# from controller.utils.controlmp import ControlMotor
-# from controller.utils.Face import Face
-# import RPi.GPIO as GPIO
+from controller.utils.controlmp import ControlMotor
+from controller.utils.Face import Face
+import RPi.GPIO as GPIO
 import time
 
 # 创建APP对象
